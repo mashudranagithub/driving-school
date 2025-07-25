@@ -24,6 +24,9 @@
                         <a class="nav-link" href="#about">About</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#price">Price</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#services">Services</a>
                     </li>
                     <li class="nav-item">
@@ -50,9 +53,9 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="text-center" data-aos="fade-left">
+                    <div class="text-center aos-init aos-animate d-flex align-items-center justify-content-end" data-aos="fade-top">
                         <div class="floating">
-                            <i class="fas fa-car" style="font-size: 15rem; color: rgba(255,255,255,0.1);"></i>
+                            <i class="fas fa-car" style="font-size: 12rem; color: rgba(255,255,255,0.1);"></i>
                         </div>
                     </div>
                 </div>
@@ -112,11 +115,44 @@
                     </div>
                 @endif
             </div>
+
+
+            <!-- Areas Covered Section -->
+            <div class="row align-items-center mt-5 pt-5" data-aos="fade-up">
+                <div class="col-lg-4 position-relative mb-4 mb-lg-0">
+                    <div class="image-stack d-flex justify-content-certer">
+                        <i class="fa-solid fa-car-side" style="font-size: 15rem; color: rgb(250 107 3);"></i>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <h4 class="fw-bold text-uppercase mb-3">Areas Covers</h4>
+                    <p class="font-bold" style="font-size: 1.2rem;">
+                        Barking, Dagenham, Becontree, Dagenham Heatway, Dagenham East, Forest Gate, Romford, Loughton, Hainult, Ilford, Manor Park, East Ham,
+                        Haringey, Chigwell, Chingford, Highams Park, Seven Kings, Newbury Park, Barkingside, Stratford, Goodmayes, Woodford, Gants Hill,
+                        Walthamstow, Leyton, Leytonstone, Wanstead, Snaresbrook, Buckhurst Hill, Chadwell Heath, Collier Row, Plaistow, Canning Town.
+                    </p>
+
+                    <hr class="my-4">
+
+                    <h5 class="fw-bold text-uppercase mb-2">Contact Us</h5>
+                    <p class="mb-1">
+                        <i class="fas fa-phone-alt text-danger me-2"></i>
+                        <a href="tel:01918631391" class="text-decoration-none text-dark">01918631391</a>
+                    </p>
+                    <p>
+                        <i class="fas fa-envelope text-danger me-2"></i>
+                        <a href="mailto:fnfproject2025@gmail.com" class="text-decoration-none text-dark">fnfproject2025@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+
+
+
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="services">
+    <section id="price" class="price">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
@@ -202,74 +238,407 @@
         </div>
     </section>
 
-    <!-- Booking Section -->
-    <section id="booking" class="booking">
+    <!-- Services Section -->
+    <section id="services" class="services">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                    <h2 class="section-title" data-aos="fade-up">Book Your Driving Lesson</h2>
-                    <p class="section-subtitle" data-aos="fade-up">Ready to start your driving journey? Fill out the form below and we'll get back to you shortly.</p>
+                    <h2 class="section-title" data-aos="fade-up">{{ $services['title'] ?? 'Our Services' }}</h2>
+                    <p class="section-subtitle" data-aos="fade-up">{{ $services['subtitle'] ?? 'Choose the perfect service for your learning needs and budget.' }}</p>
                 </div>
             </div>
+            <div class="row g-4">
+                @foreach($services ?? [] as $service)
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                        <div class="service-card">
+                            <div class="service-content">
+                                <h4>{{ $service['title'] }}</h4>
+                                <p>{{ $service['description'] }}</p>
+                                <ul class="list-unstyled">
+                                    @foreach($service['features'] as $feature)
+                                        <li><i class="fas fa-check text-success me-2"></i>{{ $feature }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+
+                @if(empty($services))
+                    <div class="col-lg-3 col-md-3" data-aos="fade-up">
+                        <div class="service-card">
+                            <div class="service-content">
+                                <h4>Individual Lessons</h4>
+                                <p>Perfect for beginners or those who need refresher lessons. One-on-one instruction tailored to your pace.</p>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success me-2"></i>1 Hour Session</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Personal Instructor</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Flexible Timing</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3" data-aos="fade-up">
+                        <div class="service-card">
+                            <div class="service-content">
+                                <h4>Intensive Course</h4>
+                                <p>Get ready for your test quickly with our intensive driving course. Perfect for fast learners.</p>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success me-2"></i>10 Hour Package</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Test Preparation</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Save £50</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3" data-aos="fade-up">
+                        <div class="service-card">
+                            <div class="service-content">
+                                <h4>Complete Package</h4>
+                                <p>Everything you need from beginner to test pass. Includes theory and practical test support.</p>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success me-2"></i>30 Hour Package</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Theory Test Support</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Save £250</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3" data-aos="fade-up">
+                        <div class="service-card">
+                            <div class="service-content">
+                                <h4>Complete Package</h4>
+                                <p>Everything you need from beginner to test pass. Includes theory and practical test support.</p>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check text-success me-2"></i>30 Hour Package</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Theory Test Support</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Save £250</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="booking">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="section-title" data-aos="fade-up">Book Your Driving Lesson</h2>
+                    <p class="section-subtitle" data-aos="fade-up">
+                        Ready to start your driving journey? Fill out the form and we’ll get in touch shortly.
+                    </p>
+                </div>
+            </div>
+
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <form class="booking-form" data-aos="fade-up" id="bookingForm">
+                    <form class="booking-form" id="bookingForm" method="POST" action="#" data-aos="fade-up">
+                        @csrf
                         <div class="row g-3">
+
+                            <!-- Full Name -->
                             <div class="col-md-6">
                                 <label for="name" class="form-label">Full Name *</label>
-                                <input type="text" class="form-control" id="name" required>
+                                <input type="text" class="form-control" id="name" name="name" maxlength="100" required>
                             </div>
+
+                            <!-- Email -->
                             <div class="col-md-6">
                                 <label for="email" class="form-label">Email Address *</label>
-                                <input type="email" class="form-control" id="email" required>
+                                <input type="email" class="form-control" id="email" name="email" required>
                             </div>
+
+                            <!-- Phone -->
                             <div class="col-md-6">
                                 <label for="phone" class="form-label">Phone Number *</label>
-                                <input type="tel" class="form-control" id="phone" required>
+                                <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9\s+\-]+" required>
                             </div>
+
+                            <!-- Postcode -->
                             <div class="col-md-6">
-                                <label for="postcode" class="form-label">Postcode *</label>
-                                <input type="text" class="form-control" id="postcode" required>
+                                <label for="postcode" class="form-label">Postcode * (UK format)</label>
+                                <input type="text" class="form-control" id="postcode" name="postcode"
+                                       placeholder="e.g., E17 3AB" maxlength="8" pattern="^([A-Z]{1,2}[0-9][0-9A-Z]?)\s?[0-9][A-Z]{2}$" required>
                             </div>
-                            <div class="col-md-4">
-                                <label for="experience" class="form-label">Driving Experience *</label>
-                                <select class="form-control" id="experience" required>
-                                    <option value="">Select...</option>
-                                    <option value="complete-beginner">Complete Beginner</option>
-                                    <option value="some-experience">Some Experience</option>
-                                    <option value="refresher">Refresher Course</option>
-                                    <option value="test-preparation">Test Preparation</option>
-                                </select>
+
+
+                            <!-- Previous Lessons -->
+                            <div class="col-md-12">
+                                <div class="question-box p-3 border rounded mb-1">
+                                    <div class="d-flex flex-wrap justify-content-between align-items-center">
+                                        <label class="form-label mb-2 mb-md-0">Have you had previous lessons? *</label>
+                                        <div>
+                                            <input type="radio" name="previous_lessons" value="yes" id="prev_yes" required>
+                                            <label for="prev_yes" class="me-3 ms-1">Yes</label>
+                                            <input type="radio" name="previous_lessons" value="no" id="prev_no">
+                                            <label for="prev_no" class="ms-1">No</label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-4">
-                                <label for="package" class="form-label">Preferred Package *</label>
-                                <select class="form-control" id="package" required>
-                                    <option value="">Select...</option>
-                                    <option value="individual">Individual Lessons</option>
-                                    <option value="intensive">Intensive Course</option>
-                                    <option value="complete">Complete Package</option>
-                                </select>
+
+
+                            <!-- Theory Test -->
+                            <div class="col-md-12">
+                                <div class="question-box p-3 border rounded mb-1">
+                                    <div class="d-flex flex-wrap justify-content-between align-items-center">
+                                        <label class="form-label mb-2 mb-md-0">Have you passed your theory test? *</label>
+                                        <div>
+                                            <input type="radio" name="theory_test" value="yes" id="theory_yes" required>
+                                            <label for="theory_yes" class="me-3 ms-1">Yes</label>
+                                            <input type="radio" name="theory_test" value="no" id="theory_no">
+                                            <label for="theory_no" class="ms-1">No</label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-4">
-                                <label for="transmission" class="form-label">Transmission Type *</label>
-                                <select class="form-control" id="transmission" required>
-                                    <option value="">Select...</option>
-                                    <option value="manual">Manual</option>
-                                    <option value="automatic">Automatic</option>
-                                </select>
+
+                            <!-- Transmission Type -->
+                            <div class="col-md-12">
+                                <div class="question-box p-3 border rounded mb-1">
+                                    <div class="d-flex flex-wrap justify-content-between align-items-center">
+                                        <label class="form-label mb-2 mb-md-0">Are you looking for Manual or Automatic lessons? *</label>
+                                        <div>
+                                            <input type="radio" name="transmission" value="manual" id="trans_manual" required>
+                                            <label for="trans_manual" class="me-3 ms-1">Manual</label>
+                                            <input type="radio" name="transmission" value="automatic" id="trans_auto">
+                                            <label for="trans_auto" class="ms-1">Automatic</label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
+
+                            <!-- Message -->
                             <div class="col-12">
                                 <label for="message" class="form-label">Additional Message</label>
-                                <textarea class="form-control" id="message" rows="4" placeholder="Tell us about your specific needs or any questions you have..."></textarea>
+                                <textarea class="form-control" id="message" name="message" rows="2" maxlength="500"
+                                          placeholder="Tell us about your needs or questions... (Max 500 characters)"></textarea>
                             </div>
-                            <div class="col-12">
+
+                            <!-- Submit -->
+                            <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-book">
                                     <i class="fas fa-calendar-check me-2"></i>Book My Lesson
                                 </button>
                             </div>
+
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col text-center">
+                    <h2 class="section-title">Our Gallery</h2>
+                    <p class="section-subtitle">Moments from our training sessions and happy students</p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                @foreach($galleryImages ?? [] as $image)
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="gallery-item position-relative overflow-hidden rounded shadow-sm">
+                            <a href="{{ asset('storage/gallery/' . $image) }}" class="glightbox" data-gallery="gallery-group">
+                                <img src="{{ asset('storage/gallery/' . $image) }}" class="img-fluid w-100 h-100 object-fit-cover" alt="Driving School Image">
+                                <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50 text-white">
+                                    <span>View Image</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+
+                @if(empty($galleryImages))
+                    <!-- Default placeholders if no images available -->
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="gallery-item position-relative overflow-hidden rounded shadow-sm">
+                                <a href="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" class="glightbox" data-gallery="gallery-group">
+                                    <img src="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" class="img-fluid rounded shadow" alt="Sample 1">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50 text-white">
+                                        <span>View Image</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="gallery-item position-relative overflow-hidden rounded shadow-sm">
+                                <a href="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" class="glightbox" data-gallery="gallery-group">
+                                    <img src="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" class="img-fluid rounded shadow" alt="Sample 1">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50 text-white">
+                                        <span>View Image</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="gallery-item position-relative overflow-hidden rounded shadow-sm">
+                                <a href="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" class="glightbox" data-gallery="gallery-group">
+                                    <img src="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" class="img-fluid rounded shadow" alt="Sample 1">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50 text-white">
+                                        <span>View Image</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="gallery-item position-relative overflow-hidden rounded shadow-sm">
+                                <a href="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" class="glightbox" data-gallery="gallery-group">
+                                    <img src="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" class="img-fluid rounded shadow" alt="Sample 1">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50 text-white">
+                                        <span>View Image</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="gallery-item position-relative overflow-hidden rounded shadow-sm">
+                                <a href="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" class="glightbox" data-gallery="gallery-group">
+                                    <img src="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" class="img-fluid rounded shadow" alt="Sample 1">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50 text-white">
+                                        <span>View Image</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="gallery-item position-relative overflow-hidden rounded shadow-sm">
+                                <a href="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" class="glightbox" data-gallery="gallery-group">
+                                    <img src="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" class="img-fluid rounded shadow" alt="Sample 1">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50 text-white">
+                                        <span>View Image</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                @endif
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews">
+        <div class="container">
+            <div class="row mb-4 text-center">
+                <div class="col">
+                    <h2 class="section-title">What Our Students Say</h2>
+                    <p class="section-subtitle">Real feedback from our happy learners</p>
+                </div>
+            </div>
+
+            <div id="reviewsCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    @foreach($reviews ?? [] as $index => $review)
+                        <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <div class="card border-0 shadow text-center p-4">
+                                        <div class="mb-3">
+                                            <i class="fas fa-quote-left fa-2x text-primary"></i>
+                                        </div>
+                                        <p class="mb-3">{{ $review['text'] }}</p>
+                                        <h5 class="fw-bold mb-0">{{ $review['name'] }}</h5>
+                                        <small class="text-muted">{{ $review['location'] ?? '' }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
+                    @if(empty($reviews))
+                        <!-- Default Reviews -->
+                        <div class="carousel-item active">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <div class="card border-0 shadow text-center p-4">
+                                        <div class="mb-3">
+                                            <i class="fas fa-quote-left fa-2x"></i>
+                                        </div>
+                                        <p class="mb-3">Privilege Driving School made me feel confident behind the wheel. Great instructors!</p>
+                                        <h5 class="fw-bold mb-0">Sarah M.</h5>
+                                        <small class="text-muted">Ilford</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <div class="card border-0 shadow text-center p-4">
+                                        <div class="mb-3">
+                                            <i class="fas fa-quote-left fa-2x"></i>
+                                        </div>
+                                        <p class="mb-3">Privilege Driving School made me feel confident behind the wheel. Great instructors!</p>
+                                        <h5 class="fw-bold mb-0">Sarah M.</h5>
+                                        <small class="text-muted">Ilford</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <div class="card border-0 shadow text-center p-4">
+                                        <div class="mb-3">
+                                            <i class="fas fa-quote-left fa-2x"></i>
+                                        </div>
+                                        <p class="mb-3">Privilege Driving School made me feel confident behind the wheel. Great instructors!</p>
+                                        <h5 class="fw-bold mb-0">Sarah M.</h5>
+                                        <small class="text-muted">Ilford</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <div class="card border-0 shadow text-center p-4">
+                                        <div class="mb-3">
+                                            <i class="fas fa-quote-left fa-2x "></i>
+                                        </div>
+                                        <p class="mb-3">Privilege Driving School made me feel confident behind the wheel. Great instructors!</p>
+                                        <h5 class="fw-bold mb-0">Sarah M.</h5>
+                                        <small class="text-muted">Ilford</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <div class="card border-0 shadow text-center p-4">
+                                        <div class="mb-3">
+                                            <i class="fas fa-quote-left fa-2x "></i>
+                                        </div>
+                                        <p class="mb-3">Privilege Driving School made me feel confident behind the wheel. Great instructors!</p>
+                                        <h5 class="fw-bold mb-0">Sarah M.</h5>
+                                        <small class="text-muted">Ilford</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add more default slides if desired -->
+                    @endif
+                </div>
+
+                <!-- Carousel Controls with Font Awesome -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="prev">
+                    <span class="floating-btn"><i class="fas fa-chevron-left"></i></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="next">
+                    <span class="floating-btn"><i class="fas fa-chevron-right"></i></span>
+                </button>
+
             </div>
         </div>
     </section>
@@ -282,10 +651,9 @@
                     <h5>Privilege Driving School</h5>
                     <p>Professional driving instruction with a focus on safety and confidence. Join thousands of satisfied students who have learned to drive with us.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-2">
