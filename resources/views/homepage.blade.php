@@ -21,16 +21,19 @@
                         <a class="nav-link" href="#home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
+                        <a class="nav-link" href="#about">Area Covers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#price">Price</a>
+                        <a class="nav-link" href="#price">Prices</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#services">Services</a>
+                        <a class="nav-link" href="#services">Courses</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#booking">Book Now</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Gallery</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
@@ -55,7 +58,7 @@
                 <div class="col-lg-6">
                     <div class="text-center aos-init aos-animate d-flex align-items-center justify-content-end" data-aos="fade-top">
                         <div class="floating">
-                            <i class="fas fa-car" style="font-size: 12rem; color: rgba(255,255,255,0.1);"></i>
+                            <i class="fas fa-car"></i>
                         </div>
                     </div>
                 </div>
@@ -125,7 +128,7 @@
                     </div>
                 </div>
                 <div class="col-lg-8">
-                    <h4 class="fw-bold text-uppercase mb-3">Areas Covers</h4>
+                    <h4 class="fw-bold text-uppercase mb-3">Area Covers</h4>
                     <p class="font-bold" style="font-size: 1.2rem;">
                         Barking, Dagenham, Becontree, Dagenham Heatway, Dagenham East, Forest Gate, Romford, Loughton, Hainult, Ilford, Manor Park, East Ham,
                         Haringey, Chigwell, Chingford, Highams Park, Seven Kings, Newbury Park, Barkingside, Stratford, Goodmayes, Woodford, Gants Hill,
@@ -156,7 +159,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                    <h2 class="section-title" data-aos="fade-up">{{ $services['title'] ?? 'Our Driving Packages' }}</h2>
+                    <h2 class="section-title" data-aos="fade-up">{{ $services['title'] ?? 'Our Prices' }}</h2>
                     <p class="section-subtitle" data-aos="fade-up">{{ $services['subtitle'] ?? 'Choose the perfect package for your learning needs and budget.' }}</p>
                 </div>
             </div>
@@ -243,7 +246,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                    <h2 class="section-title" data-aos="fade-up">{{ $services['title'] ?? 'Our Services' }}</h2>
+                    <h2 class="section-title" data-aos="fade-up">{{ $services['title'] ?? 'Our Courses' }}</h2>
                     <p class="section-subtitle" data-aos="fade-up">{{ $services['subtitle'] ?? 'Choose the perfect service for your learning needs and budget.' }}</p>
                 </div>
             </div>
@@ -252,7 +255,7 @@
                     <div class="col-lg-4 col-md-6" data-aos="fade-up">
                         <div class="service-card">
                             <div class="service-content">
-                                <h4>{{ $service['title'] }}</h4>
+                                <h4 class="service-price">{{ $service['title'] }}</h4>
                                 <p>{{ $service['description'] }}</p>
                                 <ul class="list-unstyled">
                                     @foreach($service['features'] as $feature)
@@ -268,7 +271,7 @@
                     <div class="col-lg-3 col-md-3" data-aos="fade-up">
                         <div class="service-card">
                             <div class="service-content">
-                                <h4>Individual Lessons</h4>
+                                <h4 class="service-price">Individual Lessons</h4>
                                 <p>Perfect for beginners or those who need refresher lessons. One-on-one instruction tailored to your pace.</p>
                                 <ul class="list-unstyled">
                                     <li><i class="fas fa-check text-success me-2"></i>1 Hour Session</li>
@@ -281,7 +284,7 @@
                     <div class="col-lg-3 col-md-3" data-aos="fade-up">
                         <div class="service-card">
                             <div class="service-content">
-                                <h4>Intensive Course</h4>
+                                <h4 class="service-price">Intensive Course</h4>
                                 <p>Get ready for your test quickly with our intensive driving course. Perfect for fast learners.</p>
                                 <ul class="list-unstyled">
                                     <li><i class="fas fa-check text-success me-2"></i>10 Hour Package</li>
@@ -294,7 +297,7 @@
                     <div class="col-lg-3 col-md-3" data-aos="fade-up">
                         <div class="service-card">
                             <div class="service-content">
-                                <h4>Complete Package</h4>
+                                <h4 class="service-price">Complete Package</h4>
                                 <p>Everything you need from beginner to test pass. Includes theory and practical test support.</p>
                                 <ul class="list-unstyled">
                                     <li><i class="fas fa-check text-success me-2"></i>30 Hour Package</li>
@@ -307,7 +310,7 @@
                     <div class="col-lg-3 col-md-3" data-aos="fade-up">
                         <div class="service-card">
                             <div class="service-content">
-                                <h4>Complete Package</h4>
+                                <h4 class="service-price">Complete Package</h4>
                                 <p>Everything you need from beginner to test pass. Includes theory and practical test support.</p>
                                 <ul class="list-unstyled">
                                     <li><i class="fas fa-check text-success me-2"></i>30 Hour Package</li>
@@ -434,94 +437,37 @@
         </div>
     </section>
 
-
-    <!-- Gallery Section -->
+    <!-- Gallery -->
     <section id="gallery" class="gallery">
         <div class="container">
-            <div class="row mb-4">
-                <div class="col text-center">
-                    <h2 class="section-title">Our Gallery</h2>
-                    <p class="section-subtitle">Moments from our training sessions and happy students</p>
-                </div>
-            </div>
+            <h2 class="section-title text-center">Our Gallery</h2>
+            <p class="section-subtitle text-center mb-4">Moments from our training sessions and happy students</p>
 
-            <div class="row g-4">
-                @foreach($galleryImages ?? [] as $image)
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="gallery-item position-relative overflow-hidden rounded shadow-sm">
+            <div class="swiper myGallery">
+                <div class="swiper-wrapper">
+                    @foreach($galleryImages ?? [] as $image)
+                        <div class="swiper-slide">
                             <a href="{{ asset('storage/gallery/' . $image) }}" class="glightbox" data-gallery="gallery-group">
-                                <img src="{{ asset('storage/gallery/' . $image) }}" class="img-fluid w-100 h-100 object-fit-cover" alt="Driving School Image">
-                                <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50 text-white">
-                                    <span>View Image</span>
-                                </div>
+                                <img src="{{ asset('storage/gallery/' . $image) }}" alt="Gallery Image" class="img-fluid rounded shadow-sm" />
                             </a>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
 
-                @if(empty($galleryImages))
-                    <!-- Default placeholders if no images available -->
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="gallery-item position-relative overflow-hidden rounded shadow-sm">
+                    @if(empty($galleryImages))
+                        @for ($i = 0; $i < 6; $i++)
+                            <div class="swiper-slide">
                                 <a href="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" class="glightbox" data-gallery="gallery-group">
-                                    <img src="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" class="img-fluid rounded shadow" alt="Sample 1">
-                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50 text-white">
-                                        <span>View Image</span>
-                                    </div>
+                                    <img src="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" alt="Sample Image" class="img-fluid rounded shadow-sm" />
                                 </a>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="gallery-item position-relative overflow-hidden rounded shadow-sm">
-                                <a href="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" class="glightbox" data-gallery="gallery-group">
-                                    <img src="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" class="img-fluid rounded shadow" alt="Sample 1">
-                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50 text-white">
-                                        <span>View Image</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="gallery-item position-relative overflow-hidden rounded shadow-sm">
-                                <a href="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" class="glightbox" data-gallery="gallery-group">
-                                    <img src="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" class="img-fluid rounded shadow" alt="Sample 1">
-                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50 text-white">
-                                        <span>View Image</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="gallery-item position-relative overflow-hidden rounded shadow-sm">
-                                <a href="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" class="glightbox" data-gallery="gallery-group">
-                                    <img src="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" class="img-fluid rounded shadow" alt="Sample 1">
-                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50 text-white">
-                                        <span>View Image</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="gallery-item position-relative overflow-hidden rounded shadow-sm">
-                                <a href="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" class="glightbox" data-gallery="gallery-group">
-                                    <img src="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" class="img-fluid rounded shadow" alt="Sample 1">
-                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50 text-white">
-                                        <span>View Image</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="gallery-item position-relative overflow-hidden rounded shadow-sm">
-                                <a href="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" class="glightbox" data-gallery="gallery-group">
-                                    <img src="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" class="img-fluid rounded shadow" alt="Sample 1">
-                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-50 text-white">
-                                        <span>View Image</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                @endif
+                        @endfor
+                    @endif
+                </div>
+
+                <!-- Navigation buttons OUTSIDE the swiper container -->
+                <div class="swiper-button-prev custom-swiper-nav"></div>
+                <div class="swiper-button-next custom-swiper-nav"></div>
+
             </div>
         </div>
     </section>
@@ -643,7 +589,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer Section -->
     <footer id="contact" class="footer">
         <div class="container">
             <div class="row g-4">

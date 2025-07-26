@@ -1,9 +1,15 @@
+/*===========================
+  Root & Global Styles
+===========================*/
 :root {
     --primary-color: #1f2937;
     --secondary-color: #ff6b35;
     --accent-color: #ff6b35;
     --dark-color: #1f2937;
     --light-color: #f8fafc;
+    --car-icon-size-large: 18rem;
+    --car-icon-size-medium: 12rem;
+    --car-icon-size-small: 10rem;
 }
 
 * {
@@ -19,12 +25,13 @@ body {
     overflow-x: hidden;
 }
 
-/* Smooth scrolling */
 html {
     scroll-behavior: smooth;
 }
 
-/* Header */
+/*===========================
+  Header (Navbar)
+===========================*/
 .navbar {
     background: rgba(31, 41, 55, 0.95);
     backdrop-filter: blur(10px);
@@ -34,7 +41,7 @@ html {
 
 .navbar.scrolled {
     background: rgba(31, 41, 55, 0.98);
-    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-brand {
@@ -62,7 +69,9 @@ html {
     background: #fff;
 }
 
-/* Hero Section */
+/*===========================
+  Hero Section
+===========================*/
 .hero {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
     min-height: 100vh;
@@ -93,46 +102,51 @@ html {
     font-weight: 700;
     color: white;
     margin-bottom: 1.5rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero p {
     font-size: 1.2rem;
-    color: rgba(255,255,255,0.9);
+    color: rgba(255, 255, 255, 0.9);
     margin-bottom: 2rem;
 }
 
-.btn-primary-custom {
-    background: var(--secondary-color);
-    border: none;
-    padding: 15px 30px;
+.hero .floating i.fas.fa-car {
+    color: rgba(255,255,255,0.1);
+}
+
+/*===========================
+  Buttons
+===========================*/
+.btn-primary-custom,
+.btn-outline-custom,
+.btn-book {
     font-size: 1.1rem;
     font-weight: 600;
     border-radius: 50px;
     transition: all 0.3s ease;
-    color: white;
     text-decoration: none;
     display: inline-block;
+}
+
+.btn-primary-custom {
+    background: var(--secondary-color);
+    color: white;
+    padding: 15px 30px;
+    border: none;
     margin-right: 1rem;
 }
 
 .btn-primary-custom:hover {
     background: #d97706;
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    color: white;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .btn-outline-custom {
     border: 2px solid white;
     color: white;
     padding: 15px 30px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
 }
 
 .btn-outline-custom:hover {
@@ -141,28 +155,35 @@ html {
     transform: translateY(-2px);
 }
 
-/* Floating animations */
+.btn-book {
+    background: var(--secondary-color);
+    color: white;
+    padding: 15px 40px;
+    width: 100%;
+    border: none;
+}
+
+.btn-book:hover {
+    background: #e55a2b;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/*===========================
+  Floating Animations
+===========================*/
 .floating {
     animation: floating 3s ease-in-out infinite;
 }
 
 @keyframes floating {
-    0%, 100% { transform: translateY(0px); }
+    0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-20px); }
 }
 
-@media (max-width: 767.98px) {
-    .app-name {
-        display: none;
-    }
-}
-
-/* About Section */
-.about {
-    padding: 100px 0;
-    background: var(--light-color);
-}
-
+/*===========================
+  Section Titles & Layout
+===========================*/
 .section-title {
     font-size: 2.5rem;
     font-weight: 700;
@@ -178,18 +199,34 @@ html {
     margin-bottom: 3rem;
 }
 
+/*===========================
+  Animations on Scroll Delay
+===========================*/
+[data-aos="fade-up"]:nth-child(1) { animation-delay: 0.1s; }
+[data-aos="fade-up"]:nth-child(2) { animation-delay: 0.2s; }
+[data-aos="fade-up"]:nth-child(3) { animation-delay: 0.3s; }
+[data-aos="fade-up"]:nth-child(4) { animation-delay: 0.4s; }
+
+/*===========================
+  About Section
+===========================*/
+.about {
+    padding: 100px 0;
+    background: var(--light-color);
+}
+
 .feature-card {
     background: white;
     padding: 2rem;
     border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     height: 100%;
 }
 
 .feature-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
 .feature-icon {
@@ -205,7 +242,9 @@ html {
     color: white;
 }
 
-/* Services Section */
+/*===========================
+  Services / Price Sections
+===========================*/
 .price,
 .gallery {
     padding: 100px 0;
@@ -222,14 +261,14 @@ html {
     background: white;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     height: 100%;
 }
 
 .service-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
 .service-image {
@@ -253,7 +292,9 @@ html {
     margin-bottom: 1rem;
 }
 
-/* Booking Section */
+/*===========================
+  Booking Section
+===========================*/
 .booking {
     padding: 100px 0;
     background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
@@ -281,123 +322,19 @@ html {
 }
 
 .booking .section-subtitle {
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .booking-form {
     background: white;
     padding: 3rem;
     border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
 }
 
-.form-control {
-    border: 2px solid #e5e7eb;
-    border-radius: 10px;
-    padding: 12px 15px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.form-control:focus {
-    border-color: var(--secondary-color);
-    box-shadow: 0 0 0 0.2rem rgba(255, 107, 53, 0.25);
-}
-
-.btn-book {
-    background: var(--secondary-color);
-    border: none;
-    padding: 15px 40px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 50px;
-    color: white;
-    transition: all 0.3s ease;
-    width: 100%;
-}
-
-.btn-book:hover {
-    background: #e55a2b;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-/* Footer */
-.footer {
-    background: var(--dark-color);
-    color: white;
-    padding: 60px 0 30px;
-}
-
-.footer h5 {
-    color: var(--secondary-color);
-    margin-bottom: 1.5rem;
-    font-weight: 700;
-}
-
-.footer a {
-    color: rgba(255,255,255,0.8);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer a:hover {
-    color: var(--secondary-color);
-}
-
-.social-links a {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    background: var(--secondary-color);
-    color: white;
-    text-align: center;
-    line-height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-    transition: all 0.3s ease;
-}
-
-.social-links a:hover {
-    background: #e55a2b;
-    transform: translateY(-2px);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero p {
-        font-size: 1rem;
-    }
-
-    .btn-primary-custom,
-    .btn-outline-custom {
-        display: block;
-        text-align: center;
-        margin-bottom: 1rem;
-    }
-
-    .section-title {
-        font-size: 2rem;
-    }
-
-    .booking-form {
-        padding: 2rem;
-    }
-}
-
-/* Animation delays */
-[data-aos="fade-up"]:nth-child(1) { animation-delay: 0.1s; }
-[data-aos="fade-up"]:nth-child(2) { animation-delay: 0.2s; }
-[data-aos="fade-up"]:nth-child(3) { animation-delay: 0.3s; }
-[data-aos="fade-up"]:nth-child(4) { animation-delay: 0.4s; }
-
-
-
-/*Gallery CSS Start Here*/
+/*===========================
+  Gallery Section
+===========================*/
 .gallery-item {
     position: relative;
     overflow: hidden;
@@ -422,11 +359,61 @@ html {
     opacity: 1;
 }
 
+.myGallery {
+    position: unset !important;
+}
 
-/*Reviews CSS Start Here*/
+#gallery .container {
+    position: relative;
+}
 
-/* Reviews Section Styling */
+.custom-swiper-nav {
+    background-color: #fb6b36;
+    color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.custom-swiper-nav::after {
+    font-size: 20px;
+    color: #fff;
+}
+
+.custom-swiper-nav:hover,
+.custom-swiper-nav:hover::after {
+    background-color: transparent;
+    color: #fb6b36;
+}
+
+.custom-swiper-nav:hover {
+    border: 1px solid #fb6b36;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    top: calc(50% + 76px);
+    transform: translateY(-50%);
+    position: absolute;
+}
+
+.swiper-button-prev {
+    left: -40px;
+}
+
+.swiper-button-next {
+    right: -40px;
+}
+
+/*===========================
+  Reviews Section
+===========================*/
 .reviews .section-title {
     font-weight: 700;
     font-size: 2rem;
@@ -472,10 +459,49 @@ html {
     background-color: #007bff;
 }
 
+/*===========================
+  Footer & Shared Elements
+===========================*/
+.footer {
+    background: var(--dark-color);
+    color: white;
+    padding: 60px 0 30px;
+}
 
+.footer h5 {
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
 
+.footer a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
 
-/* Shared styles for floating round buttons */
+.footer a:hover {
+    color: var(--secondary-color);
+}
+
+.social-links a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: var(--secondary-color);
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: #e55a2b;
+    transform: translateY(-2px);
+}
+
 .floating-btn {
     position: fixed;
     width: 50px;
@@ -495,23 +521,112 @@ html {
     cursor: pointer;
 }
 
-/* WhatsApp Floating Button */
 .whatsapp-float {
-    top: calc(50% - 25px);
     right: 20px;
 }
 
-/* Back to Top Button */
 #backToTop {
     bottom: 20px;
     right: 20px;
-    display: none; /* Hidden by default */
+    display: none;
 }
 
-/* Hover effect for all floating buttons */
 .floating-btn:hover {
     background-color: #fff;
     border: 1px solid #fb6b36;
     color: #fb6b36;
 }
 
+
+/*===========================
+  Responsive Tweaks
+===========================*/
+
+@media (min-width: 1368px) {
+    .hero .floating i.fas.fa-car {
+        font-size: var(--car-icon-size-large);
+    }
+
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+
+    .whatsapp-float {
+        top: calc(50% - 25px);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1367px) {
+    .hero .floating i.fas.fa-car {
+        font-size: var(--car-icon-size-medium);
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .whatsapp-float {
+        top: calc(50% - 25px);
+    }
+}
+
+@media (max-width: 767px) {
+
+    .whatsapp-float {
+        bottom: 90px !important;
+        top: unset;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .hero .floating i.fas.fa-car {
+        font-size: var(--car-icon-size-small);
+    }
+
+    .btn-primary-custom,
+    .btn-outline-custom {
+        display: inline-block;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .booking-form {
+        padding: 2rem;
+    }
+
+    .navbar-brand span.app-name {
+        display: none;
+    }
+
+    .navbar-toggler {
+        background: #ffffff;
+    }
+
+    .hero-content {
+        padding-top: 15vh;
+    }
+
+    #gallery .swiper-button-prev {
+        left: 10px;
+    }
+
+    #gallery .swiper-button-next {
+        right: 10px;
+    }
+
+    .reviews .carousel-control-prev,
+    .reviews .carousel-control-next {
+        top: 80%;
+    }
+
+}
