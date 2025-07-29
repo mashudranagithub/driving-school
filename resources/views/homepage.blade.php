@@ -144,7 +144,7 @@
                     </p>
                     <p>
                         <i class="fas fa-envelope text-danger me-2"></i>
-                        <a href="mailto:fnfproject2025@gmail.com" class="text-decoration-none text-dark">fnfproject2025@gmail.com</a>
+                        <a href="mailto:privilegedrivschool@gmail.com" class="text-decoration-none text-dark">privilegedrivschool@gmail.com</a>
                     </p>
                 </div>
             </div>
@@ -339,7 +339,14 @@
 
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <form class="booking-form" id="bookingForm" method="POST" action="#" data-aos="fade-up">
+
+                    @if(session('success'))
+                        <div class="alert alert-success text-success mb-3">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    <form class="booking-form" id="bookingForm" method="POST" action="{{ route('booking.store') }}" data-aos="fade-up" >
                         @csrf
                         <div class="row g-3">
 
@@ -624,7 +631,7 @@
                     <h5>Contact Info</h5>
                     <ul class="list-unstyled">
                         <li><i class="fas fa-phone me-2"></i>0123 456 7890</li>
-                        <li><i class="fas fa-envelope me-2"></i>info@privilegedrivingschool.com</li>
+                        <li><i class="fas fa-envelope me-2"></i>privilegedrivschool@gmail.com</li>
                         <li><i class="fas fa-map-marker-alt me-2"></i>123 Driving Lane, London</li>
                         <li><i class="fas fa-clock me-2"></i>Mon-Sat: 8AM-8PM</li>
                     </ul>
@@ -683,26 +690,6 @@
                     });
                 }
             });
-        });
-
-
-        // Booking form
-        document.getElementById('bookingForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                postcode: document.getElementById('postcode').value,
-                experience: document.getElementById('experience').value,
-                package: document.getElementById('package').value,
-                transmission: document.getElementById('transmission').value,
-                message: document.getElementById('message').value
-            };
-
-            console.log('Booking form submitted:', formData);
-            alert('Thank you for your booking request! We will contact you shortly to confirm your lesson.');
-            this.reset();
         });
 
         // Interactive card hover
