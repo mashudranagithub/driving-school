@@ -251,14 +251,14 @@
                 </div>
             </div>
             <div class="row g-4">
-                @foreach($services ?? [] as $service)
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                @foreach($services as $service)
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
                         <div class="service-card">
                             <div class="service-content">
                                 <h4 class="service-price">{{ $service['title'] }}</h4>
                                 <p>{{ $service['description'] }}</p>
                                 <ul class="list-unstyled">
-                                    @foreach($service['features'] as $feature)
+                                    @foreach($service->features ?? [] as $feature)
                                         <li><i class="fas fa-check text-success me-2"></i>{{ $feature }}</li>
                                     @endforeach
                                 </ul>
