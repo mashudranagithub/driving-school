@@ -27,6 +27,7 @@
 
 <!-- Main Content -->
 <main class="">
+
     @yield('content')
 
     <!-- WhatsApp Button -->
