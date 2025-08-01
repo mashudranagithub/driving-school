@@ -23,6 +23,12 @@ class BookingResource extends Resource
     protected static ?string $model = Booking::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Website Content';
+
+
+    protected static ?string $navigationLabel = 'Bookings';
+    protected static ?int $navigationSort = 5;     // Not needed unless auto-sorting
+
 
     public static function form(Form $form): Form
     {
@@ -109,4 +115,10 @@ class BookingResource extends Resource
             'edit' => Pages\EditBooking::route('/{record}/edit'),
         ];
     }
+
+    protected function isTableWrapped(): bool
+    {
+        return false; // 💥 Disables the card wrapper = full width
+    }
+
 }

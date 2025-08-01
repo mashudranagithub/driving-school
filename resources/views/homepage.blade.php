@@ -3,6 +3,9 @@
 @section('title', 'Privilege Driving School - Professional Driving Lessons')
 
 @section('content')
+
+    @php use Illuminate\Support\Str; @endphp
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
@@ -70,25 +73,19 @@
     <section id="about" class="about">
         <div class="container">
             <div class="row">
+
                 <div class="col-lg-8 mx-auto">
-                    <h2 class="section-title" data-aos="fade-up">{{ $about['title'] ?? 'Why Choose Privilege Driving School?' }}</h2>
-                    <p class="section-subtitle" data-aos="fade-up">{{ $about['subtitle'] ?? 'We provide comprehensive driving education with a focus on safety, confidence, and excellence.' }}</p>
+                    <h2 class="section-title" data-aos="fade-up">
+                        {{ $about?->title ?? 'Why Choose Privilege Driving School?' }}
+                    </h2>
+                    <p class="section-subtitle" data-aos="fade-up">
+                        {{ $about?->subtitle ?? 'We provide comprehensive driving education with a focus on safety, confidence, and excellence.' }}
+                    </p>
                 </div>
+
             </div>
             <div class="row g-4">
-                @foreach($features ?? [] as $feature)
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                        <div class="feature-card text-center">
-                            <div class="feature-icon mx-auto">
-                                <i class="{{ $feature['icon'] }}"></i>
-                            </div>
-                            <h4>{{ $feature['title'] }}</h4>
-                            <p>{{ $feature['description'] }}</p>
-                        </div>
-                    </div>
-                @endforeach
-
-                @if(empty($features))
+                @if(empty($about_features) || $about_features->isEmpty())
                     <div class="col-lg-4 col-md-6" data-aos="fade-up">
                         <div class="feature-card text-center">
                             <div class="feature-icon mx-auto">
@@ -116,9 +113,20 @@
                             <p>Choose from a variety of lesson times that fit your busy schedule, including evenings and weekends.</p>
                         </div>
                     </div>
+                @else
+                    @foreach($about_features as $feature)
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                        <div class="feature-card text-center">
+                            <div class="feature-icon mx-auto">
+                                <i class="{{ $feature->icon }}"></i>
+                            </div>
+                            <h4>{{ $feature->title }}</h4>
+                            <p>{{ $feature->description }}</p>
+                        </div>
+                    </div>
+                    @endforeach
                 @endif
             </div>
-
 
             <!-- Areas Covered Section -->
             <div class="row align-items-center mt-5 pt-5" data-aos="fade-up">
@@ -130,9 +138,9 @@
                 <div class="col-lg-8">
                     <h4 class="fw-bold text-uppercase mb-3">Area Covers</h4>
                     <p class="font-bold" style="font-size: 1.2rem;">
-                        Barking, Dagenham, Becontree, Dagenham Heatway, Dagenham East, Forest Gate, Romford, Loughton, Hainult, Ilford, Manor Park, East Ham,
+                        {!! nl2br(e($about?->area_covers ?? 'Dummy text: Barking, Dagenham, Becontree, Dagenham Heatway, Dagenham East, Forest Gate, Romford, Loughton, Hainult, Ilford, Manor Park, East Ham,
                         Haringey, Chigwell, Chingford, Highams Park, Seven Kings, Newbury Park, Barkingside, Stratford, Goodmayes, Woodford, Gants Hill,
-                        Walthamstow, Leyton, Leytonstone, Wanstead, Snaresbrook, Buckhurst Hill, Chadwell Heath, Collier Row, Plaistow, Canning Town.
+                        Walthamstow, Leyton, Leytonstone, Wanstead, Snaresbrook, Buckhurst Hill, Chadwell Heath, Collier Row, Plaistow, Canning Town.')) !!}
                     </p>
 
                     <hr class="my-4">
@@ -140,21 +148,24 @@
                     <h5 class="fw-bold text-uppercase mb-2">Contact Us</h5>
                     <p class="mb-1">
                         <i class="fas fa-phone-alt text-danger me-2"></i>
-                        <a href="tel:01918631391" class="text-decoration-none text-dark">01918631391</a>
+                        <a href="tel:{{ $about?->phone ?? '' }}" class="text-decoration-none text-dark">
+                            {{ $about?->phone ?? 'No phone' }}
+                        </a>
                     </p>
                     <p>
                         <i class="fas fa-envelope text-danger me-2"></i>
-                        <a href="mailto:privilegedrivschool@gmail.com" class="text-decoration-none text-dark">privilegedrivschool@gmail.com</a>
+                        <a href="mailto:{{ $about?->email ?? '' }}" class="text-decoration-none text-dark">
+                            {{ $about?->email ?? 'privilegedrivschool@gmail.com' }}
+                        </a>
                     </p>
+
                 </div>
             </div>
-
-
 
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Price Section -->
     <section id="price" class="price">
         <div class="container">
             <div class="row">
@@ -164,27 +175,7 @@
                 </div>
             </div>
             <div class="row g-4">
-                @foreach($packages ?? [] as $package)
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                        <div class="service-card">
-                            <div class="service-image">
-                                <i class="{{ $package['icon'] }}"></i>
-                            </div>
-                            <div class="service-content">
-                                <div class="service-price">{{ $package['price'] }}</div>
-                                <h4>{{ $package['title'] }}</h4>
-                                <p>{{ $package['description'] }}</p>
-                                <ul class="list-unstyled">
-                                    @foreach($package['features'] as $feature)
-                                        <li><i class="fas fa-check text-success me-2"></i>{{ $feature }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-
-                @if(empty($packages))
+                @if(empty($packages) || $packages->isEmpty())
                     <div class="col-lg-4 col-md-6" data-aos="fade-up">
                         <div class="service-card">
                             <div class="service-image">
@@ -236,6 +227,26 @@
                             </div>
                         </div>
                     </div>
+                @else
+                @foreach($packages ?? [] as $package)
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                        <div class="service-card">
+                            <div class="service-image">
+                                <i class="{{ $package['icon'] }}"></i>
+                            </div>
+                            <div class="service-content">
+                                <div class="service-price">{{ $package['price'] }}</div>
+                                <h4>{{ $package['title'] }}</h4>
+                                <p>{{ Str::limit($package['description'], 120) }}</p>
+                                <ul class="list-unstyled">
+                                    @foreach($package['features'] as $feature)
+                                        <li><i class="fas fa-check text-success me-2"></i>{{ $feature }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
                 @endif
             </div>
         </div>
@@ -251,23 +262,8 @@
                 </div>
             </div>
             <div class="row g-4">
-                @foreach($services as $service)
-                <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                        <div class="service-card">
-                            <div class="service-content">
-                                <h4 class="service-price">{{ $service['title'] }}</h4>
-                                <p>{{ $service['description'] }}</p>
-                                <ul class="list-unstyled">
-                                    @foreach($service->features ?? [] as $feature)
-                                        <li><i class="fas fa-check text-success me-2"></i>{{ $feature }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
 
-                @if(empty($services))
+                @if(empty($services) || $services->isEmpty())
                     <div class="col-lg-3 col-md-3" data-aos="fade-up">
                         <div class="service-card">
                             <div class="service-content">
@@ -320,6 +316,22 @@
                             </div>
                         </div>
                     </div>
+                @else
+                @foreach($services as $service)
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                        <div class="service-card">
+                            <div class="service-content">
+                                <h4 class="service-price">{{ $service['title'] }}</h4>
+                                <p>{{ $service['description'] }}</p>
+                                <ul class="list-unstyled">
+                                    @foreach($service->features ?? [] as $feature)
+                                        <li><i class="fas fa-check text-success me-2"></i>{{ $feature }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
                 @endif
             </div>
         </div>
@@ -452,15 +464,8 @@
 
             <div class="swiper myGallery">
                 <div class="swiper-wrapper">
-                    @foreach($galleryImages ?? [] as $image)
-                        <div class="swiper-slide">
-                            <a href="{{ asset('storage/gallery/' . $image) }}" class="glightbox" data-gallery="gallery-group">
-                                <img src="{{ asset('storage/gallery/' . $image) }}" alt="Gallery Image" class="img-fluid rounded shadow-sm" />
-                            </a>
-                        </div>
-                    @endforeach
 
-                    @if(empty($galleryImages))
+                    @if(empty($galleryImages) || $galleryImages->isEmpty())
                         @for ($i = 0; $i < 6; $i++)
                             <div class="swiper-slide">
                                 <a href="{{ asset('frontend/assets/images/cars-5970663_640.webp') }}" class="glightbox" data-gallery="gallery-group">
@@ -468,7 +473,17 @@
                                 </a>
                             </div>
                         @endfor
+                    @else
+                        @foreach($galleryImages as $image)
+                            <div class="swiper-slide">
+                                <a href="{{ asset('storage/' . $image->image_path) }}" class="glightbox" data-gallery="gallery-group" title="{{ $image->caption }}">
+                                    <img src="{{ asset('storage/' . $image->image_path) }}" alt="{{ $image->caption }}" class="img-fluid rounded shadow-sm" />
+                                </a>
+                            </div>
+                        @endforeach
                     @endif
+
+
                 </div>
 
                 <!-- Navigation buttons OUTSIDE the swiper container -->
@@ -491,24 +506,8 @@
 
             <div id="reviewsCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    @foreach($reviews ?? [] as $index => $review)
-                        <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <div class="card border-0 shadow text-center p-4">
-                                        <div class="mb-3">
-                                            <i class="fas fa-quote-left fa-2x text-primary"></i>
-                                        </div>
-                                        <p class="mb-3">{{ $review['text'] }}</p>
-                                        <h5 class="fw-bold mb-0">{{ $review['name'] }}</h5>
-                                        <small class="text-muted">{{ $review['location'] ?? '' }}</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
 
-                    @if(empty($reviews))
+                    @if(empty($reviews) || $reviews->isEmpty())
                         <!-- Default Reviews -->
                         <div class="carousel-item active">
                             <div class="row justify-content-center">
@@ -566,22 +565,26 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="carousel-item">
+                        <!-- Add more default slides if desired -->
+                        @else
+                        @foreach($reviews ?? [] as $index => $review)
+                        <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
                                     <div class="card border-0 shadow text-center p-4">
                                         <div class="mb-3">
-                                            <i class="fas fa-quote-left fa-2x "></i>
+                                            <i class="fas fa-quote-left fa-2x text-primary"></i>
                                         </div>
-                                        <p class="mb-3">Privilege Driving School made me feel confident behind the wheel. Great instructors!</p>
-                                        <h5 class="fw-bold mb-0">Sarah M.</h5>
-                                        <small class="text-muted">Ilford</small>
+                                        <p class="mb-3">{{ $review->text }}</p>
+                                        <h5 class="fw-bold mb-0">{{ $review->name }}</h5>
+                                        <small class="text-muted">{{ $review->location ?? '' }}</small>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Add more default slides if desired -->
+                        @endforeach
                     @endif
+
                 </div>
 
                 <!-- Carousel Controls with Font Awesome -->
@@ -650,6 +653,7 @@
             </div>
         </div>
     </footer>
+
 @endsection
 
 @section('scripts')

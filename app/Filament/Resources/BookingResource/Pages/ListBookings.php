@@ -16,4 +16,10 @@ class ListBookings extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
+
+    protected function isTableWrapped(): bool
+    {
+        return false; // 💥 Disables the card wrapper = full width
+    }
+
 }
