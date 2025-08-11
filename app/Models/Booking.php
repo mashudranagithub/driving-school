@@ -15,6 +15,7 @@ class Booking extends Model
         'theory_test',
         'transmission',
         'message',
+        'status',
     ];
 
     protected $table = 'bookings';

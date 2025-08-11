@@ -6,9 +6,12 @@ use App\Filament\Resources\BookingResource\Pages;
 use App\Filament\Resources\BookingResource\RelationManagers;
 use App\Models\Booking;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Support\Enums\IconPosition;
 use Filament\Tables;
+use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -71,6 +74,20 @@ class BookingResource extends Resource
 
             Textarea::make('message')
                 ->maxLength(500),
+
+            Select::make('status')
+                ->label('Status')
+                ->options([
+                    'Pending' => 'Pending',
+                    'Contacted' => 'Contacted',
+                    'Booked' => 'Booked',
+                    'Course complete' => 'Course complete',
+                    'Passed' => 'Passed',
+                    'Not Interested' => 'Not Interested',
+                ])
+                ->default('Pending')
+                ->required(),
+
         ]);
     }
 
@@ -81,12 +98,24 @@ class BookingResource extends Resource
             ->columns([
                 TextColumn::make('name')->searchable()->sortable(),
                 TextColumn::make('email')->searchable(),
-                TextColumn::make('phone'),
-                TextColumn::make('postcode'),
-                TextColumn::make('previous_lessons'),
-                TextColumn::make('theory_test'),
-                TextColumn::make('transmission'),
+                TextColumn::make('phone')->searchable(),
+                TextColumn::make('postcode')->searchable(),
+                TextColumn::make('previous_lessons')->searchable(),
+                TextColumn::make('theory_test')->searchable(),
+                TextColumn::make('transmission')->searchable(),
                 TextColumn::make('created_at')->dateTime('d M Y, h:i A'),
+                TextColumn::make('status')
+                    ->sortable()
+                    ->searchable()
+                    ->badge()
+                    ->colors([
+                        'warning' => 'Pending',
+                        'info' => 'Contacted',
+                        'success' => 'Booked',
+                        'danger' => 'Course complete',
+                        'primary' => 'Passed',
+                        'secondary' => 'Not Interested',
+                    ]),
             ])
             ->filters([])
             ->actions([
